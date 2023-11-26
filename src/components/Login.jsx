@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
-import useRegister from "../containers/Register/hooks/useRegister";
+import { Form, Button, Container, InputGroup, FormControl } from "react-bootstrap";
+import useLogin from "../containers/Login/hooks/useLogin";
+import { EyeFill, EyeSlashFill } from 'react-bootstrap-icons';
 
-function Register() {
-  const { formValue, setFormValue, handleSubmit, loading } = useRegister();
+function Login() {
+  const { formValue, setFormValue, handleSubmit, loading } = useLogin();
+
   return (
     <Container className="mt-5">
-      <h2>Register</h2>
+      <h2>Login</h2>
       <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter username"
-            onChange={(e) => {
-              setFormValue({ ...formValue, name: e.target.value });
-            }}
-            value={formValue.name ?? ""}
-          />
-        </Form.Group>
         <Form.Group>
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -41,12 +32,13 @@ function Register() {
             value={formValue.password ?? ""}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Register
+        <Button variant="primary" type="submit" className="mt-3 w-100">
+          Login
         </Button>
+        <p>Have an account ? <a href="/register" class="text-decoration-none">Click Here</a></p>
       </Form>
     </Container>
   );
 }
 
-export default Register;
+export default Login;
